@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tracking"
+            android:text="Order status"
             android:textColor="@color/ink"
             android:textSize="17sp"
             android:textStyle="bold" />
@@ -37,79 +37,13 @@
                 android:tint="@color/accent" />
 
             <TextView
+                android:id="@+id/tvNotifBannerText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Rider arrived at station"
+                android:text="Rider is at the filling station"
                 android:textColor="@color/accent"
                 android:textSize="12.5sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:orientation="vertical"
-            android:background="@drawable/bg_card"
-            android:padding="16dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <LinearLayout
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/bg_icon_chip"
-                    android:gravity="center">
-
-                    <ImageView
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:src="@drawable/ic_drop"
-                        android:tint="@color/accent" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:text="Refilling at station"
-                    android:textColor="@color/ink"
-                    android:textSize="13.5sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <LinearLayout
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/bg_icon_chip_muted"
-                    android:gravity="center">
-
-                    <ImageView
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:src="@drawable/ic_bike"
-                        android:tint="@color/muted_icon" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:text="Returning to you"
-                    android:textColor="@color/muted_icon"
-                    android:textSize="13.5sp" />
-            </LinearLayout>
-
         </LinearLayout>
 
         <LinearLayout

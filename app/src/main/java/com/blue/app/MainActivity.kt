@@ -22,6 +22,16 @@ private enum class Screen(val flipperIndex: Int) {
     ONBOARDING(0), REQUEST(1), TRACK(2)
 }
 
+private data class PaymentAccount(val number: String, val label: String, val bank: String)
+
+// Pool of accounts we rotate through for "Make payment" — reshuffled once all 4 are used.
+private val PAYMENT_ACCOUNTS = listOf(
+    PaymentAccount("8127 445 210", "Blue Logistics", "Moniepoint"),
+    PaymentAccount("0234 981 663", "Blue Logistics Ops", "GTBank"),
+    PaymentAccount("5610 772 044", "Blue Logistics Ltd", "Kuda"),
+    PaymentAccount("3399 108 527", "Blue Gas Services", "Opay")
+)
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var flipper: ViewFlipper
@@ -33,6 +43,7 @@ class MainActivity : AppCompatActivity() {
     private var scheduledTimeLabel: String? = null
     private var orderStarted = false
     private var paid = false
+    private var accountQueue: MutableList<PaymentAccount> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -118,14 +129,36 @@ class MainActivity : AppCompatActivity() {
 
         val requestScroll = findViewById<View>(R.id.etKg).let { findScrollViewAncestor(it) }
 
+        val btnMakePayment = findViewById<View>(R.id.btnMakePayment)
+        val rowPaymentLoading = findViewById<View>(R.id.rowPaymentLoading)
+        val sectionPaymentDetails = findViewById<View>(R.id.sectionPaymentDetails)
+
         findViewById<View>(R.id.btnRequestPickup).setOnClickListener {
             kg = etKg.text.toString().toDoubleOrNull() ?: kg
             orderStarted = true
             setNavEnabled(R.id.navTrack, true)
-            // Scroll down within the page to reveal the payment section.
+            // Scroll down within the page to reveal the Make payment button.
             requestScroll?.post {
-                requestScroll.smoothScrollTo(0, findViewById<View>(R.id.btnPaid).top)
+                requestScroll.smoothScrollTo(0, btnMakePayment.top)
             }
+        }
+
+        btnMakePayment.setOnClickListener {
+            btnMakePayment.visibility = View.GONE
+            rowPaymentLoading.visibility = View.VISIBLE
+            // Simulated lookup delay — swap for a real API call later.
+            Handler(Looper.getMainLooper()).postDelayed({
+                val account = nextAccount()
+                findViewById<TextView>(R.id.tvAccountNumber).text = account.number
+                findViewById<TextView>(R.id.tvAccountLabel).text = account.label
+                findViewById<TextView>(R.id.tvAccountBank).text = account.bank
+
+                rowPaymentLoading.visibility = View.GONE
+                sectionPaymentDetails.visibility = View.VISIBLE
+                requestScroll?.post {
+                    requestScroll.smoothScrollTo(0, sectionPaymentDetails.top)
+                }
+            }, 1200)
         }
 
         val btnPaid = findViewById<View>(R.id.btnPaid)
@@ -146,6 +179,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Hands out accounts one at a time from a shuffled pool of 4; reshuffles once exhausted
+    // so no account repeats until every other one has been shown.
+    private fun nextAccount(): PaymentAccount {
+        if (accountQueue.isEmpty()) {
+            accountQueue = PAYMENT_ACCOUNTS.shuffled().toMutableList()
+        }
+        return accountQueue.removeAt(0)
+    }
+
     private fun findScrollViewAncestor(view: View): ScrollView? {
         var parent = view.parent
         while (parent != null) {
@@ -157,8 +199,17 @@ class MainActivity : AppCompatActivity() {
 
     // ---- Track + Done (one scrollable page) --------------------------------
 
+    private val trackingNotifications = listOf(
+        "Rider is at the filling station",
+        "Rider is on the way back to you"
+    )
+    private var trackingNotifIndex = 0
+
     private fun setupTrackAndDoneScreen() {
         findViewById<View>(R.id.btnPing).setOnClickListener {
+            findViewById<TextView>(R.id.tvNotifBannerText).text =
+                trackingNotifications[trackingNotifIndex % trackingNotifications.size]
+            trackingNotifIndex++
             findViewById<View>(R.id.notifBanner).visibility = View.VISIBLE
         }
 
