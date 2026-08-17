@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg">
+
+    <ViewFlipper
+        android:id="@+id/flipper"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <include layout="@layout/view_onboarding" />
+        <include layout="@layout/view_request" />
+        <include layout="@layout/view_track" />
+        <include layout="@layout/view_pay" />
+        <include layout="@layout/view_done" />
+
+    </ViewFlipper>
+
+    <LinearLayout
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/bg"
+        android:paddingTop="10dp"
+        android:paddingBottom="14dp"
+        android:visibility="gone">
+
+        <include layout="@layout/item_nav" android:id="@+id/navRequest" />
+        <include layout="@layout/item_nav" android:id="@+id/navTrack" />
+        <include layout="@layout/item_nav" android:id="@+id/navPay" />
+        <include layout="@layout/item_nav" android:id="@+id/navDone" />
+        <include layout="@layout/item_nav" android:id="@+id/navCall" />
+
+    </LinearLayout>
+
+</LinearLayout>

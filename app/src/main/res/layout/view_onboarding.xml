@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_logo_badge"
+            android:gravity="center"
+            android:text="blue"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Your gas.\nVerified. Delivered."
+            android:textColor="@color/ink"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:lineSpacingMultiplier="1.15" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="We pick it up, refill it at a trusted station, weigh it, bring it back."
+            android:textColor="@color/muted"
+            android:textSize="13.5sp"
+            android:lineSpacingMultiplier="1.4" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card"
+            android:padding="6dp">
+
+            <include layout="@layout/row_feature"
+                android:id="@+id/featureVerified" />
+            <include layout="@layout/row_feature"
+                android:id="@+id/featureWeighed" />
+            <include layout="@layout/row_feature"
+                android:id="@+id/featureLoaner" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnGetStarted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/btn_accent"
+            android:text="Get started"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp" />
+
+        <TextView
+            android:id="@+id/tvCallOnboarding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:gravity="center"
+            android:text="📞  Or call 0803 000 1122"
+            android:textColor="@color/accent"
+            android:textSize="12.5sp"
+            android:clickable="true"
+            android:focusable="true" />
+
+    </LinearLayout>
+</ScrollView>
