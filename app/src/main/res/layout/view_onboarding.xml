@@ -8,30 +8,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="match_parent"
         android:orientation="vertical"
         android:padding="24dp">
 
         <LinearLayout
             android:layout_width="76dp"
             android:layout_height="76dp"
-            android:background="@drawable/bg_icon_chip"
+            android:background="@drawable/bg_icon_chip_accent"
             android:gravity="center">
 
             <ImageView
                 android:layout_width="34dp"
                 android:layout_height="34dp"
-                android:src="@drawable/ic_flame"
-                android:tint="@color/accent" />
+                android:src="@drawable/ic_flame" />
         </LinearLayout>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="76dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="blue"
             android:textColor="@color/accent"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:gravity="center"
+            android:textAlignment="center"
             android:letterSpacing="-0.02" />
 
         <TextView
@@ -59,7 +61,7 @@
             android:layout_marginTop="18dp"
             android:orientation="vertical"
             android:background="@drawable/bg_card"
-            android:padding="6dp">
+            android:padding="10dp">
 
             <include layout="@layout/row_feature"
                 android:id="@+id/featureVerified" />
