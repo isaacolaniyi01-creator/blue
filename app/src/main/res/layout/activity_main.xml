@@ -14,8 +14,6 @@
         <include layout="@layout/view_onboarding" />
         <include layout="@layout/view_request" />
         <include layout="@layout/view_track" />
-        <include layout="@layout/view_pay" />
-        <include layout="@layout/view_done" />
 
     </ViewFlipper>
 
@@ -32,8 +30,6 @@
 
         <include layout="@layout/item_nav" android:id="@+id/navRequest" />
         <include layout="@layout/item_nav" android:id="@+id/navTrack" />
-        <include layout="@layout/item_nav" android:id="@+id/navPay" />
-        <include layout="@layout/item_nav" android:id="@+id/navDone" />
         <include layout="@layout/item_nav" android:id="@+id/navCall" />
 
     </LinearLayout>

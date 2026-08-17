@@ -1,150 +1,307 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/bg"
-    android:padding="20dp">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Enter kg"
-        android:textColor="@color/ink"
-        android:textSize="17sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:text="Whatever size your cylinder is"
-        android:textColor="@color/muted"
-        android:textSize="12sp" />
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:orientation="horizontal"
-        android:gravity="bottom"
-        android:background="@drawable/bg_card"
-        android:padding="18dp">
-
-        <EditText
-            android:id="@+id/etKg"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:text="12.5"
-            android:inputType="numberDecimal"
-            android:textColor="@color/ink"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:background="@null"
-            android:padding="0dp" />
+        android:orientation="vertical"
+        android:padding="20dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:layout_marginBottom="4dp"
-            android:text="kg"
-            android:textColor="@color/muted_icon"
-            android:textSize="14sp" />
-    </LinearLayout>
+            android:text="Enter kg"
+            android:textColor="@color/ink"
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:orientation="vertical"
-        android:background="@drawable/bg_card"
-        android:padding="16dp">
-
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Whatever size your cylinder is"
+            android:textColor="@color/muted"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
             android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="bottom"
+            android:background="@drawable/bg_card"
+            android:padding="18dp">
+
+            <EditText
+                android:id="@+id/etKg"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:text="12.5"
+                android:inputType="numberDecimal"
+                android:textColor="@color/ink"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:background="@null"
+                android:padding="0dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginBottom="4dp"
+                android:text="kg"
+                android:textColor="@color/muted_icon"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/ic_clock"
+                    android:tint="@color/accent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Pickup time"
+                    android:textColor="@color/ink"
+                    android:textSize="12.5sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/chipNow"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/chip_active"
+                    android:gravity="center"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="Now"
+                    android:textColor="@color/accent"
+                    android:textSize="11.5sp" />
+
+                <TextView
+                    android:id="@+id/chipSchedule"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/chip_inactive"
+                    android:gravity="center"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="Schedule"
+                    android:textColor="@color/muted"
+                    android:textSize="11.5sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvScheduledTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_input"
+                android:padding="9dp"
+                android:textColor="@color/ink"
+                android:textSize="13sp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnRequestPickup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/btn_accent"
+            android:text="Request pickup"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="Transfer to complete"
+            android:textColor="@color/ink"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card"
+            android:padding="18dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/ic_bank"
+                    android:tint="@color/accent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Account number"
+                    android:textColor="@color/muted"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="8127 445 210"
+                android:textColor="@color/ink"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.05" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Blue Logistics"
+                    android:textColor="@color/muted"
+                    android:textSize="12.5sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Moniepoint"
+                    android:textColor="@color/muted"
+                    android:textSize="12.5sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_card"
+            android:padding="16dp">
 
             <ImageView
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:src="@drawable/ic_clock"
+                android:src="@drawable/ic_receipt"
+                android:tint="@color/accent" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="Amount"
+                android:textColor="@color/muted"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="₦12,250"
+                android:textColor="@color/ink"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnPaid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/btn_accent"
+            android:text="I've paid"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp" />
+
+        <TextView
+            android:id="@+id/tvChecking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="Checking..."
+            android:textColor="@color/muted"
+            android:textSize="12.5sp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/rowPaidDone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/bg_pay_success"
+            android:padding="14dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_check"
                 android:tint="@color/accent" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Pickup time"
-                android:textColor="@color/ink"
-                android:textSize="12.5sp"
+                android:text="Payment received"
+                android:textColor="@color/accent"
+                android:textSize="13.5sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/chipNow"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/chip_active"
-                android:gravity="center"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:text="Now"
-                android:textColor="@color/accent"
-                android:textSize="11.5sp" />
-
-            <TextView
-                android:id="@+id/chipSchedule"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="8dp"
-                android:background="@drawable/chip_inactive"
-                android:gravity="center"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:text="Schedule"
-                android:textColor="@color/muted"
-                android:textSize="11.5sp" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tvScheduledTime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_input"
-            android:padding="9dp"
-            android:textColor="@color/ink"
-            android:textSize="13sp"
-            android:visibility="gone" />
-
     </LinearLayout>
-
-    <View
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <Button
-        android:id="@+id/btnRequestPickup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn_accent"
-        android:text="Request pickup"
-        android:textColor="@color/white"
-        android:textAllCaps="false"
-        android:textSize="14sp"
-        android:paddingTop="14dp"
-        android:paddingBottom="14dp" />
-
-</LinearLayout>
+</ScrollView>

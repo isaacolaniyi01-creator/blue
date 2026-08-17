@@ -1,140 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/bg"
-    android:padding="20dp">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tracking"
-        android:textColor="@color/ink"
-        android:textSize="17sp"
-        android:textStyle="bold" />
+    android:fillViewport="true">
 
     <LinearLayout
-        android:id="@+id/notifBanner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:background="@drawable/bg_card"
-        android:padding="12dp"
-        android:visibility="gone">
-
-        <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:src="@drawable/ic_bell"
-            android:tint="@color/accent" />
+        android:orientation="vertical"
+        android:padding="20dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Rider arrived at station"
-            android:textColor="@color/accent"
-            android:textSize="12.5sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:orientation="vertical"
-        android:background="@drawable/bg_card"
-        android:padding="16dp">
+            android:text="Tracking"
+            android:textColor="@color/ink"
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
         <LinearLayout
+            android:id="@+id/notifBanner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_card"
+            android:padding="12dp"
+            android:visibility="gone">
 
-            <LinearLayout
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/bg_icon_chip"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:src="@drawable/ic_drop"
-                    android:tint="@color/accent" />
-            </LinearLayout>
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_bell"
+                android:tint="@color/accent" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="Refilling at station"
-                android:textColor="@color/ink"
-                android:textSize="13.5sp" />
+                android:layout_marginStart="8dp"
+                android:text="Rider arrived at station"
+                android:textColor="@color/accent"
+                android:textSize="12.5sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:orientation="vertical"
+            android:background="@drawable/bg_card"
+            android:padding="16dp">
 
             <LinearLayout
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/bg_icon_chip_muted"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_icon_chip"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/ic_drop"
+                        android:tint="@color/accent" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="Refilling at station"
+                    android:textColor="@color/ink"
+                    android:textSize="13.5sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_icon_chip_muted"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/ic_bike"
+                        android:tint="@color/muted_icon" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="Returning to you"
+                    android:textColor="@color/muted_icon"
+                    android:textSize="13.5sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnPing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_card"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:src="@drawable/ic_bell"
+                android:tint="@color/accent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="Simulate ping"
+                android:textColor="@color/accent"
+                android:textSize="11.5sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="28dp">
+
+            <LinearLayout
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/bg_card"
                 android:gravity="center">
 
                 <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:src="@drawable/ic_bike"
-                    android:tint="@color/muted_icon" />
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/ic_truck"
+                    android:tint="@color/accent" />
             </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="Returning to you"
-                android:textColor="@color/muted_icon"
-                android:textSize="13.5sp" />
+                android:layout_marginTop="16dp"
+                android:text="Cylinder back with you?"
+                android:textColor="@color/ink"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/btnPing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:background="@drawable/bg_card"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:clickable="true"
-        android:focusable="true">
-
-        <ImageView
-            android:layout_width="13dp"
-            android:layout_height="13dp"
-            android:src="@drawable/ic_bell"
-            android:tint="@color/accent" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:text="Simulate ping"
-            android:textColor="@color/accent"
-            android:textSize="11.5sp" />
-    </LinearLayout>
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_card"
+            android:padding="12dp">
 
-</LinearLayout>
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_scale"
+                android:tint="@color/accent" />
+
+            <TextView
+                android:id="@+id/tvWeightDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="12.5kg confirmed full"
+                android:textColor="@color/ink"
+                android:textSize="12.5sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_card"
+            android:padding="12dp">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_receipt"
+                android:tint="@color/accent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Receipt attached"
+                android:textColor="@color/ink"
+                android:textSize="12.5sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnConfirmReceived"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/btn_accent"
+            android:text="Confirm received"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp" />
+
+    </LinearLayout>
+</ScrollView>

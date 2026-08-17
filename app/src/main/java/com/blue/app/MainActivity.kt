@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.ViewFlipper
 import androidx.appcompat.app.AppCompatActivity
@@ -18,7 +19,7 @@ import java.util.Calendar
 private const val SUPPORT_PHONE = "08030001122"
 
 private enum class Screen(val flipperIndex: Int) {
-    ONBOARDING(0), REQUEST(1), TRACK(2), PAY(3), DONE(4)
+    ONBOARDING(0), REQUEST(1), TRACK(2)
 }
 
 class MainActivity : AppCompatActivity() {
@@ -42,10 +43,8 @@ class MainActivity : AppCompatActivity() {
 
         setupOnboarding()
         setupFeatureList()
-        setupRequestScreen()
-        setupTrackScreen()
-        setupPayScreen()
-        setupDoneScreen()
+        setupRequestAndPayScreen()
+        setupTrackAndDoneScreen()
         setupBottomNav()
     }
 
@@ -72,9 +71,9 @@ class MainActivity : AppCompatActivity() {
         row.findViewById<TextView>(R.id.featureSubtitle).text = subtitle
     }
 
-    // ---- Request ---------------------------------------------------------
+    // ---- Request + Pay (one scrollable page) -------------------------------
 
-    private fun setupRequestScreen() {
+    private fun setupRequestAndPayScreen() {
         val etKg = findViewById<EditText>(R.id.etKg)
         etKg.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
@@ -117,26 +116,18 @@ class MainActivity : AppCompatActivity() {
             ).show()
         }
 
+        val requestScroll = findViewById<View>(R.id.etKg).let { findScrollViewAncestor(it) }
+
         findViewById<View>(R.id.btnRequestPickup).setOnClickListener {
             kg = etKg.text.toString().toDoubleOrNull() ?: kg
             orderStarted = true
             setNavEnabled(R.id.navTrack, true)
-            setNavEnabled(R.id.navPay, true)
-            goTo(Screen.TRACK)
+            // Scroll down within the page to reveal the payment section.
+            requestScroll?.post {
+                requestScroll.smoothScrollTo(0, findViewById<View>(R.id.btnPaid).top)
+            }
         }
-    }
 
-    // ---- Track ----------------------------------------------------------
-
-    private fun setupTrackScreen() {
-        findViewById<View>(R.id.btnPing).setOnClickListener {
-            findViewById<View>(R.id.notifBanner).visibility = View.VISIBLE
-        }
-    }
-
-    // ---- Pay --------------------------------------------------------------
-
-    private fun setupPayScreen() {
         val btnPaid = findViewById<View>(R.id.btnPaid)
         val tvChecking = findViewById<View>(R.id.tvChecking)
         val rowPaidDone = findViewById<View>(R.id.rowPaidDone)
@@ -149,14 +140,28 @@ class MainActivity : AppCompatActivity() {
                 tvChecking.visibility = View.GONE
                 rowPaidDone.visibility = View.VISIBLE
                 paid = true
-                setNavEnabled(R.id.navDone, true)
+                setNavEnabled(R.id.navTrack, true)
+                goTo(Screen.TRACK)
             }, 1100)
         }
     }
 
-    // ---- Done -------------------------------------------------------------
+    private fun findScrollViewAncestor(view: View): ScrollView? {
+        var parent = view.parent
+        while (parent != null) {
+            if (parent is ScrollView) return parent
+            parent = parent.parent
+        }
+        return null
+    }
 
-    private fun setupDoneScreen() {
+    // ---- Track + Done (one scrollable page) --------------------------------
+
+    private fun setupTrackAndDoneScreen() {
+        findViewById<View>(R.id.btnPing).setOnClickListener {
+            findViewById<View>(R.id.notifBanner).visibility = View.VISIBLE
+        }
+
         findViewById<View>(R.id.btnConfirmReceived).setOnClickListener {
             findViewById<TextView>(R.id.tvWeightDetail).text = "${kg}kg confirmed full"
             // Real app: log this confirmation to the rider/ops tablet here.
@@ -168,13 +173,9 @@ class MainActivity : AppCompatActivity() {
     private fun setupBottomNav() {
         configureNavItem(R.id.navRequest, R.drawable.ic_flame, "Request") { goTo(Screen.REQUEST) }
         configureNavItem(R.id.navTrack, R.drawable.ic_pin, "Track") { goTo(Screen.TRACK) }
-        configureNavItem(R.id.navPay, R.drawable.ic_bank, "Pay") { goTo(Screen.PAY) }
-        configureNavItem(R.id.navDone, R.drawable.ic_check, "Done") { goTo(Screen.DONE) }
         configureNavItem(R.id.navCall, R.drawable.ic_phone, "Call") { placeCall() }
 
         setNavEnabled(R.id.navTrack, false)
-        setNavEnabled(R.id.navPay, false)
-        setNavEnabled(R.id.navDone, false)
     }
 
     private fun configureNavItem(includeId: Int, iconRes: Int, label: String, onClick: () -> Unit) {
@@ -193,8 +194,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun goTo(screen: Screen) {
         // Guard against jumping into screens that need an order first.
-        if (screen != Screen.ONBOARDING && screen != Screen.REQUEST && !orderStarted) return
-        if (screen == Screen.DONE && !paid) return
+        if (screen == Screen.TRACK && !orderStarted) return
         flipper.displayedChild = screen.flipperIndex
         highlightNav(screen)
     }
@@ -203,10 +203,8 @@ class MainActivity : AppCompatActivity() {
         val map = mapOf(
             Screen.REQUEST to R.id.navRequest,
             Screen.TRACK to R.id.navTrack,
-            Screen.PAY to R.id.navPay,
-            Screen.DONE to R.id.navDone,
         )
-        listOf(R.id.navRequest, R.id.navTrack, R.id.navPay, R.id.navDone, R.id.navCall).forEach { id ->
+        listOf(R.id.navRequest, R.id.navTrack, R.id.navCall).forEach { id ->
             findViewById<View>(id).setBackgroundResource(0)
         }
         map[screen]?.let { findViewById<View>(it).setBackgroundResource(R.drawable.bg_nav_active) }
