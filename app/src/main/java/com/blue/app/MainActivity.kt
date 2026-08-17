@@ -8,6 +8,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.ViewFlipper
@@ -59,14 +60,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupFeatureList() {
-        fillFeatureRow(R.id.featureVerified, "🛡️", "Verified stations only", "No diluted, no shortchanged")
-        fillFeatureRow(R.id.featureWeighed, "⚖️", "Weighed before and after", "See the numbers yourself")
-        fillFeatureRow(R.id.featureLoaner, "🛢️", "Free loaner cylinder", "Never without gas")
+        fillFeatureRow(R.id.featureVerified, R.drawable.ic_shield_check, "Verified stations only", "No diluted, no shortchanged")
+        fillFeatureRow(R.id.featureWeighed, R.drawable.ic_scale, "Weighed before and after", "See the numbers yourself")
+        fillFeatureRow(R.id.featureLoaner, R.drawable.ic_tank, "Free loaner cylinder", "Never without gas")
     }
 
-    private fun fillFeatureRow(includeId: Int, icon: String, title: String, subtitle: String) {
+    private fun fillFeatureRow(includeId: Int, iconRes: Int, title: String, subtitle: String) {
         val row = findViewById<View>(includeId)
-        row.findViewById<TextView>(R.id.featureIcon).text = icon
+        row.findViewById<ImageView>(R.id.featureIcon).setImageResource(iconRes)
         row.findViewById<TextView>(R.id.featureTitle).text = title
         row.findViewById<TextView>(R.id.featureSubtitle).text = subtitle
     }
@@ -165,20 +166,20 @@ class MainActivity : AppCompatActivity() {
     // ---- Bottom nav ---------------------------------------------------------
 
     private fun setupBottomNav() {
-        configureNavItem(R.id.navRequest, "🔥", "Request") { goTo(Screen.REQUEST) }
-        configureNavItem(R.id.navTrack, "📍", "Track") { goTo(Screen.TRACK) }
-        configureNavItem(R.id.navPay, "🏦", "Pay") { goTo(Screen.PAY) }
-        configureNavItem(R.id.navDone, "✓", "Done") { goTo(Screen.DONE) }
-        configureNavItem(R.id.navCall, "📞", "Call") { placeCall() }
+        configureNavItem(R.id.navRequest, R.drawable.ic_flame, "Request") { goTo(Screen.REQUEST) }
+        configureNavItem(R.id.navTrack, R.drawable.ic_pin, "Track") { goTo(Screen.TRACK) }
+        configureNavItem(R.id.navPay, R.drawable.ic_bank, "Pay") { goTo(Screen.PAY) }
+        configureNavItem(R.id.navDone, R.drawable.ic_check, "Done") { goTo(Screen.DONE) }
+        configureNavItem(R.id.navCall, R.drawable.ic_phone, "Call") { placeCall() }
 
         setNavEnabled(R.id.navTrack, false)
         setNavEnabled(R.id.navPay, false)
         setNavEnabled(R.id.navDone, false)
     }
 
-    private fun configureNavItem(includeId: Int, icon: String, label: String, onClick: () -> Unit) {
+    private fun configureNavItem(includeId: Int, iconRes: Int, label: String, onClick: () -> Unit) {
         val item = findViewById<View>(includeId)
-        item.findViewById<TextView>(R.id.navIcon).text = icon
+        item.findViewById<ImageView>(R.id.navIcon).setImageResource(iconRes)
         item.findViewById<TextView>(R.id.navLabel).text = label
         item.setOnClickListener { onClick() }
     }

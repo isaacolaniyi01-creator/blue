@@ -13,13 +13,18 @@
         android:gravity="center_horizontal"
         android:layout_marginTop="8dp">
 
-        <TextView
+        <LinearLayout
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:background="@drawable/bg_card"
-            android:gravity="center"
-            android:text="🚚"
-            android:textSize="26sp" />
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_truck"
+                android:tint="@color/accent" />
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -40,11 +45,11 @@
         android:background="@drawable/bg_card"
         android:padding="12dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="⚖️"
-            android:textSize="14sp" />
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/ic_scale"
+            android:tint="@color/accent" />
 
         <TextView
             android:id="@+id/tvWeightDetail"
@@ -65,11 +70,11 @@
         android:background="@drawable/bg_card"
         android:padding="12dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="🧾"
-            android:textSize="14sp" />
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/ic_receipt"
+            android:tint="@color/accent" />
 
         <TextView
             android:layout_width="wrap_content"

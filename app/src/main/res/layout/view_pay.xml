@@ -28,11 +28,11 @@
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="🏦"
-                android:textSize="14sp" />
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_bank"
+                android:tint="@color/accent" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -85,11 +85,11 @@
         android:background="@drawable/bg_card"
         android:padding="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="🧾"
-            android:textSize="14sp" />
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/ic_receipt"
+            android:tint="@color/accent" />
 
         <TextView
             android:layout_width="0dp"
@@ -144,13 +144,11 @@
         android:padding="14dp"
         android:visibility="gone">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="✓"
-            android:textColor="@color/accent"
-            android:textStyle="bold"
-            android:textSize="15sp" />
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_check"
+            android:tint="@color/accent" />
 
         <TextView
             android:layout_width="wrap_content"

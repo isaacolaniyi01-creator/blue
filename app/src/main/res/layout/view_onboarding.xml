@@ -2,28 +2,43 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg">
+    android:background="@color/bg"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="match_parent"
         android:orientation="vertical"
         android:padding="24dp">
 
-        <TextView
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:background="@drawable/bg_logo_badge"
-            android:gravity="center"
-            android:text="blue"
-            android:textColor="@color/white"
-            android:textSize="17sp"
-            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:background="@drawable/bg_icon_chip"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:src="@drawable/ic_flame"
+                android:tint="@color/accent" />
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
+            android:text="blue"
+            android:textColor="@color/accent"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:letterSpacing="-0.02" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
             android:text="Your gas.\nVerified. Delivered."
             android:textColor="@color/ink"
             android:textSize="24sp"
@@ -56,11 +71,16 @@
 
         </LinearLayout>
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="18dp" />
+
         <Button
             android:id="@+id/btnGetStarted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
             android:background="@drawable/btn_accent"
             android:text="Get started"
             android:textColor="@color/white"
@@ -69,17 +89,30 @@
             android:paddingTop="14dp"
             android:paddingBottom="14dp" />
 
-        <TextView
-            android:id="@+id/tvCallOnboarding"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
+            android:orientation="horizontal"
             android:gravity="center"
-            android:text="📞  Or call 0803 000 1122"
-            android:textColor="@color/accent"
-            android:textSize="12.5sp"
             android:clickable="true"
-            android:focusable="true" />
+            android:focusable="true"
+            android:id="@+id/tvCallOnboarding">
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/ic_phone"
+                android:tint="@color/accent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="Or call 0803 000 1122"
+                android:textColor="@color/accent"
+                android:textSize="12.5sp" />
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>
